@@ -4,6 +4,7 @@ mod components;
 mod stores;
 
 use components::train_list::TrainsList;
+use components::new_train::NewTrain;
 use components::navbar::MyNavBar;
 
 #[function_component]
@@ -12,6 +13,7 @@ fn App() -> Html {
         <div>
             <MyNavBar/>
             <TrainsList/>
+            <NewTrain/>
         </div>
     }
 }
