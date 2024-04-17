@@ -1,2 +1,2 @@
-pub mod train;
+pub mod train_list;
 pub mod navbar;

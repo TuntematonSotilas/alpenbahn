@@ -1,8 +1,9 @@
 use yew::prelude::*;
 
 mod components;
+mod stores;
 
-use components::train::TrainsList;
+use components::train_list::TrainsList;
 use components::navbar::MyNavBar;
 
 #[function_component]

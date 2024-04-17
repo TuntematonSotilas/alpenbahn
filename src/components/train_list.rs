@@ -1,17 +1,22 @@
 use yew::prelude::*;
+use yewdux::prelude::*;
 
-struct Train {
-    name: String
-}
+use crate::stores::train_store::{Train, TrainStore};
 
 #[function_component(TrainsList)]
 pub fn train_list() -> Html {
+    
     let mut trains = Vec::<Train>::new();
     trains.push(Train { name: "T1".to_string() });
     trains.push(Train { name: "T2".to_string() });
-    let state_trains = use_state(|| trains);
+    
+    let dispatch = Dispatch::<TrainStore>::new();
+    dispatch.reduce_mut(|state| state.trains = trains);
 
-    state_trains.iter().map(|train| html! {
+    let state = dispatch.get();
+
+    state.trains.iter().map(|train| html! {
         <p>{&train.name}</p>
     }).collect()
+    
 }
