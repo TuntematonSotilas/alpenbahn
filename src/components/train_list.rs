@@ -1,21 +1,30 @@
 use yew::prelude::*;
 use yewdux::prelude::*;
+use std::rc::Rc;
 
-use crate::stores::train_store::{Train, TrainStore};
+use crate::stores::train_store::{Loco, LocoType, Train, TrainStore};
 
 #[function_component(TrainsList)]
 pub fn train_list() -> Html {
-    /*
-    let mut trains = Vec::<Train>::new();
-    trains.push(Train { name: "Pacific".to_string() });
-    trains.push(Train { name: "T2".to_string() });
     
-    let dispatch = Dispatch::<TrainStore>::new();
-    dispatch.reduce_mut(|state| state.trains = trains);
-    */
+    let dispatch = use_dispatch::<TrainStore>();
 
-    let dispatch = Dispatch::<TrainStore>::new();
-    let state = dispatch.get();
+     
+    // This runs only once, on the first render of the component.
+    use_effect_with(
+        (), // empty deps
+        move |_| {
+            // Set fake data
+            let mut trains = Vec::<Train>::new();
+            trains.push(Train { name: "Pacific".to_string(), loco: Loco { typ: LocoType::Pacific}, wagons: Vec::new() });
+                   
+            dispatch.set(TrainStore { trains });
+            || {}
+        },
+    );
+
+    let dispatch = use_dispatch::<TrainStore>();
+    let state: Rc<TrainStore> = dispatch.get();
 
     state.trains.iter().map(|train| html! {
         <p>{&train.name}</p>
