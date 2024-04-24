@@ -15,7 +15,7 @@ pub fn train_list() -> Html {
     };
 
    html! {
-        <form {onsubmit}>
+        <form {onsubmit} class="paper container">
 
             <input
                 class="form-control"

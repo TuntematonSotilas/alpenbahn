@@ -10,7 +10,7 @@ use components::navbar::MyNavBar;
 #[function_component]
 fn App() -> Html {
     html! {
-        <div>
+        <div class="col">
             <MyNavBar/>
             <TrainsList/>
             <NewTrain/>
