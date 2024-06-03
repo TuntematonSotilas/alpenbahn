@@ -6,7 +6,7 @@ pub fn navbar() -> Html {
          <header class="sticky">
             <div class="container">
                 <div class="nav-brand">
-                    {"Train Sim"}
+                    {"Yew"}
                 </div>
             </div>
          </header>

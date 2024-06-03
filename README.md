@@ -1,6 +1,6 @@
-# yew_train_sim
+# yew_poc
 
-A train simulation for the web
+A poc with Yew
 
 ## Install / check required tools
 
@@ -14,5 +14,3 @@ Make sure you have basic tools installed:
 ## Run 
 
 	trunk serve
-
-
